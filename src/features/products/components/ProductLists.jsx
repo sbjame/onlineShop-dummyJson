@@ -2,10 +2,9 @@ import useProducts from '../../../hooks/useProducts';
 import '../styles/ProductLists.css';
 import ProductCard from './ProductCard';
 import SidebarFilter from './SidebarFilter';
-import { useSelector } from 'react-redux'
 
 const ProductList = ()=> {
-    const { products, categories, filtered, loading } = useProducts();
+    const {  categories, filtered, loading } = useProducts();
 
     return (
         <div className='relative'>

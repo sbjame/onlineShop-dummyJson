@@ -1,27 +1,10 @@
-import Api from '../../api/ProductApi';
 import { NavLink } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import useProducts from '../../hooks/useProducts';
 
 const CategoryMenu = ({ className = '', variant = 'nav' }) => {
-    const [categories, setCategories] = useState([]);
-    const [loading, setLoading] = useState(true);
-
+    const { categories, loading } = useProducts();
+    
     const randomCategories = categories.slice().sort(() => Math.random() - 0.5).slice(0, 3);
-
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const res = await Api.get('/products/categories');
-                setCategories(res.data);
-            } catch (error) {
-                console.error('Category Loading Error: ', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchCategories()
-    }, []);
 
     return (
         <div className='relative'>

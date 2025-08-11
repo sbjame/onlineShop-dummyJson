@@ -1,26 +1,17 @@
 import { useEffect, useState } from 'react';
-import Api from '../../../api/ProductApi'
+import useProducts from '../../../hooks/useProducts';
 
 const BestRated = () => {
   const [topRated, setTopRated] = useState([]);
+  const { loading, filtered } = useProducts();
 
   useEffect(() => {
-    const fetchTopRated = async () => {
-      try {
-        const res = await Api.get('/products');
-        const sorted = res.data.products
-          .filter(p => p.rating !== undefined)
-          .sort((a, b) => b.rating - a.rating)
-          .slice(0, 5);
-
-        setTopRated(sorted);
-      } catch (error) {
-        console.error('Error fetching top-rated products:', error);
-      }
-    };
-
-    fetchTopRated();
-  }, []);
+    const sorted = filtered
+      .filter(p => p.rating !== undefined)
+      .sort((a, b) => b.rating - a.rating)
+      .slice(0, 5);
+    setTopRated(sorted)
+  }, [filtered]);
 
   return (
     <div className='bg-white p-8 flex flex-col gap-8'>
@@ -41,6 +32,11 @@ const BestRated = () => {
           </div>
         ))}
       </div>
+      {loading && (
+        <div className="absolute inset-0 z-50 bg-white/40 w-[100vw] h-[100vh] backdrop-blur-sm flex items-center justify-center">
+          <p className="text-xl font-medium text-gray-700 animate-pulse">Loading...</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -11,9 +11,6 @@ const CartList = () => {
     
     const goToProductDetail = (product) => {
         const slug = product.title.toLowerCase().replace(/\s+/g, '-');
-        console.log('Click Product', product);
-        console.log('Slug: ', slug);
-        console.log(`/product/${product.category}/${slug}`);
         navigate(`/product/${product.category}/${slug}`)
     };
 

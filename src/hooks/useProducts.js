@@ -51,10 +51,8 @@ const useProducts = () =>{
 
     useEffect(() => {
         if (categoryFromUrl) {
-            console.log('categoryFromUrl: ', categoryFromUrl);
             dispatch(setCategory(categoryFromUrl));
         } else {
-            console.log('categoryFromUrl: ', categoryFromUrl);
             dispatch(setCategory(''));
         }
     }, [categoryFromUrl, dispatch]);
