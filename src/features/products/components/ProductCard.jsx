@@ -21,10 +21,10 @@ const ProductCard = ({ product }) =>{
     };
 
     return(
-        <li key={product.id} className='card relative flex flex-col flex-auto w-[32vw] sm:w-60 justify-between gap-2 mb-8 cursor-pointer'>
+        <li key={product.id} className='card relative flex flex-col flex-auto w-[44vw] sm:w-50 justify-between gap-2 mb-8 cursor-pointer'>
             <h2 className='absolute top-2 left-2 py-1 px-4 rounded-4xl text-white bg-red-600 text-base font-light'>SALE</h2>
             <div className='p-4 bg-white rounded flex justify-center items-center'>
-                <img onClick={goToProductDetail} src={product.thumbnail} alt={product.title + ' Image'} className='w-auto h-auto'/>
+                <img onClick={goToProductDetail} src={product.thumbnail} alt={product.title + ' Image'} className='w-50 h-auto'/>
             </div>
             <h1 className='text-sm sm:text-base font-medium'>{product.title}</h1>
             <div className='flex flex-col sm:flex-row justify-between items-center'>

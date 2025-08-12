@@ -3,14 +3,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../cart/cartSlice';
 import Api from '../../../api/ProductApi';
+import useProducts from '../../../hooks/useProducts';
 
 const ProductDetail = ({ onAddToCart = () => { } }) => {
     const dispatch = useDispatch();
-
     const { slug } = useParams();
     const [product, setProduct] = useState([]);
-    const [loading, setLoading] = useState(true)
-
+    const { products, loading } = useProducts();
     const [quantity, setQuantity] = useState(1);
 
     const handleAddToCart = () => {
@@ -18,23 +17,14 @@ const ProductDetail = ({ onAddToCart = () => { } }) => {
     }
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const res = await Api.get('/products?limit=194');
-                const allProducts = res.data.products;
-                const foundProduct = allProducts.find(p =>
-                    encodeURIComponent(p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')) === slug
-                );
-                setProduct(foundProduct);
-            } catch (error) {
-                console.error('Loading Error: ', error);
-            } finally {
-                setLoading(false);
-            }
-        }
+        if (!products.length) return;
 
-        fetchProducts();
-    }, [slug]);
+        const fountProduct = products.find(
+            p => encodeURIComponent(p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')) === slug
+        );
+
+        setProduct(fountProduct);
+    }, [products, slug]);
 
     return (
         <div className='relative'>

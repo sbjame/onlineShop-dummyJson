@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () =>{
     return(
-        <div className="bg-white grid grid-cols-2 sm:flex justify-around gap-4 p-4 border sm:p-8">
+        <div className="bg-white grid grid-cols-2 sm:flex justify-around gap-4 p-4 sm:p-8">
             <div className="left flex flex-col gap-2 sm:gap-4 text-sm sm:text-base">
                 <h1 className='font-medium text-xl sm:text-2xl'>Store Location</h1>
                 <h2>Bangkok, Thailand</h2>

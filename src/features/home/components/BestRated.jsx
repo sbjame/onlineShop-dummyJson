@@ -1,24 +1,33 @@
 import { useEffect, useState } from 'react';
 import useProducts from '../../../hooks/useProducts';
+import { useNavigate } from 'react-router-dom';
 
 const BestRated = () => {
   const [topRated, setTopRated] = useState([]);
-  const { loading, filtered } = useProducts();
+  const { products } = useProducts();
 
   useEffect(() => {
-    const sorted = filtered
+    const sorted = products
       .filter(p => p.rating !== undefined)
       .sort((a, b) => b.rating - a.rating)
       .slice(0, 5);
     setTopRated(sorted)
-  }, [filtered]);
+  }, [products]);
 
+  const navigate = useNavigate();
+
+  const goToProductDetail = (p) =>{
+    const category = p.category;
+    const slug = p.title.toLowerCase().replace(/\s+/g, '-');
+    navigate(`/product/${category}/${slug}`);
+  }
+  
   return (
     <div className='bg-white p-8 flex flex-col gap-8'>
       <h2 className='text-3xl font-medium text-center'>Best Rated Products</h2>
       <div className="flex flex-wrap justify-center gap-8">
         {topRated.map((product) => (
-          <div key={product.id} className="card flex flex-col flex-auto basis-40 items-center justify-between border-2 border-gray-200 rounded p-8 transition-all duration-300 group">
+          <div key={product.id} onClick={() => {goToProductDetail(product)}} className="card cursor-pointer flex flex-col flex-auto basis-40 items-center justify-between border-2 border-gray-200 rounded p-8 transition-all duration-300 group">
             <img
               src={product.thumbnail}
               alt={product.name}
@@ -32,11 +41,6 @@ const BestRated = () => {
           </div>
         ))}
       </div>
-      {loading && (
-        <div className="absolute inset-0 z-50 bg-white/40 w-[100vw] h-[100vh] backdrop-blur-sm flex items-center justify-center">
-          <p className="text-xl font-medium text-gray-700 animate-pulse">Loading...</p>
-        </div>
-      )}
     </div>
   );
 };

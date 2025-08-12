@@ -10,7 +10,7 @@ const ProductList = ()=> {
         <div className='relative'>
             <div className='flex flex-col md:flex-row justify-between px-2 md:p-4 bg-gray-200'>
                 <SidebarFilter categories={categories}/>
-                <div className='left flex flex-col py-2 sm:py-12 px-0 md:px-4 w-full md:w-[80vw]'>
+                <div className='left flex flex-col py-2 sm:py-12 pl-0 md:pl-4 w-full md:w-[80vw]'>
                     <h1 className='text-6xl text-black font-medium'>Product list</h1>
                     <h1 className='text-base text-black font-light mt-10 mb-2'>{filtered.length} Products</h1>
                     <ul className='flex flex-wrap w-full gap-1'>
