@@ -9,8 +9,8 @@
 
 A React + Vite-based e-commerce UI using dummy JSON data for development and prototyping.
 
-Live Demo: https://online-shop-dummyjson.vercel.app
-[!Live Demo](https://online-shop-with-dummyjson.vercel.app/)
+# Live Demo
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://online-shop-with-dummyjson.vercel.app/)
 
 ## Table of Contents
 - [About](#about)
