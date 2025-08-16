@@ -1,6 +1,6 @@
 const HeroSection = () =>{
     return (
-        <div className="relative flex justify-baseline items-center h-80 md:h-150 bg-[url(./img/iphone13pro.jpg)] bg-center">
+        <div className={`relative flex justify-baseline items-center h-80 md:h-150 bg-[url('/img/iphone13pro.jpg')] bg-center bg-cover`}>
             <div className="flex flex-col justify-center items-baseline pl-4 lg:pl-16 max-w-none lg:max-w-[50vw] h-full bg-gradient-to-r from-white to-white/0">
                 <div className="bg-red-600 text-white px-2 text-xl sm:text-2xl py-0.5">Best Prices</div>
                 <h1 className="text-3xl xl:text-8xl sm:text-6xl">Incredible Prices on All Your Favorite Items</h1>
