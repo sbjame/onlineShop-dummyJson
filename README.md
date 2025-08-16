@@ -9,7 +9,6 @@
 
 A React + Vite-based e-commerce UI using dummy JSON data for development and prototyping.
 
-# Live Demo
 [Linve Demo](https://online-shop-with-dummyjson.vercel.app/)
 
 ## Table of Contents
