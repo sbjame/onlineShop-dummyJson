@@ -61,6 +61,7 @@ Then open http://localhost:5173 in your browser.
 - Add items to shopping cart and simulate a basic checkout flow
 
 ## Project Struture
+```text
 ├── public/
 │   └── img/
 ├── src/
@@ -78,3 +79,4 @@ Then open http://localhost:5173 in your browser.
 ├── package.json
 ├── vite.config.js
 └── README.md
+```
